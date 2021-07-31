@@ -1,0 +1,13 @@
+.audioResponse{
+    background-color: blueviolet;
+}
+
+.soundOutlined{
+    color: rgba(205,220,250,1);
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    display: flex;
+    flex: 1;
+    padding: 5px;
+}

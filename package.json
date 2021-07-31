@@ -1,6 +1,6 @@
 {
-  "name": "chat-ui-react",
-  "version": "0.2.13",
+  "name": "awesome-chat-ui-react",
+  "version": "1.0.0",
   "description": "React component for conversational UI.",
   "keywords": [
     "chat",
@@ -9,7 +9,7 @@
     "material-ui"
   ],
   "license": "MIT",
-  "author": "twihike",
+  "author": "lmenkovaa",
   "files": [
     "dist"
   ],
@@ -19,7 +19,7 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twihike/chat-ui-react.git"
+    "url": "https://github.com/Lmenkovaa/chat-ui-react.git"
   },
   "scripts": {
     "build": "run-s build:*",
@@ -27,7 +27,6 @@
     "build:types": "tsc -p tsconfig.build.json",
     "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel src --out-dir dist/esm --extensions \".ts,.tsx,js,jsx\"",
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs --extensions \".ts,.tsx,js,jsx\"",
-    "build:browser": "cross-env NODE_ENV=production rollup -c",
     "lint": "run-s -c lint:*",
     "lint:eslint": "eslint src",
     "lint:prettier": "prettier --check src",
@@ -37,9 +36,15 @@
     "release:version": "standard-version"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@babel/runtime-corejs3": "^7.13.10",
-    "@material-ui/icons": "4.9.1",
-    "audio-recorder-polyfill": "^0.4.1"
+    "@material-ui/icons": "^4.9.1",
+    "antd": "^4.16.9",
+    "audio-recorder-polyfill": "^0.4.1",
+    "awesome-chat-ui-react": "^0.0.2",
+    "chat-ui-react": "^0.2.13",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
@@ -50,7 +55,7 @@
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
-    "@material-ui/core": "^4.11.3",
+    "@material-ui/core": "^4.11.4",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",

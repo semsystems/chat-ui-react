@@ -10,6 +10,7 @@ export interface Message<C extends MessageContent> {
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
+  audio?: string;
 }
 
 export type MessageContent = string | JSX.Element;
@@ -22,6 +23,12 @@ export interface TextMessage extends Message<string> {
 export interface JSXMessage extends Message<JSX.Element> {
   type: 'jsx';
   content: JSX.Element;
+}
+
+export interface TextAudioMessage extends Message<string> {
+  type: 'text_audio';
+  content: string;
+  audio: string;
 }
 
 export interface ActionRequest {

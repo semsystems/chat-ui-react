@@ -1,4 +1,6 @@
 import { Theme, makeStyles } from '@material-ui/core';
+import { Button, message } from 'antd';
+import { SoundOutlined } from "@ant-design/icons";
 import React from 'react';
 
 import { ChatController } from '../chat-controller';
@@ -52,6 +54,14 @@ const useStyles = makeStyles((theme: Theme) => ({
       minWidth: 0,
     },
   },
+  audioWithMessage: {
+    flex: '0 1 0%',
+    display: 'flex',
+    flexDirection: 'row',
+    '& > *': {
+      maxWidth: '90%',
+    },
+  }
 }));
 
 export function MuiChat({
@@ -115,14 +125,22 @@ export function MuiChat({
                   message={msg}
                 />
               );
+            } else if (msg.type === 'text_audio') {
+              return (
+                <MuiMessage
+                  key={messages.indexOf(msg)}
+                  id={`cu-msg-${messages.indexOf(msg) + 1}`}
+                  message={msg}
+                />
+              );
             }
-            return (
-              <MuiMessage
-                key={messages.indexOf(msg)}
-                id={`cu-msg-${messages.indexOf(msg) + 1}`}
-                message={unknownMsg}
-              />
-            );
+              return (
+                <MuiMessage
+                  key={messages.indexOf(msg)}
+                  id={`cu-msg-${messages.indexOf(msg) + 1}`}
+                  message={unknownMsg}
+                />
+              );
           },
         )}
       </div>
