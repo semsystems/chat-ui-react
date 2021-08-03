@@ -1,4 +1,4 @@
-import { Box, Grow, Typography } from '@material-ui/core';
+import { Avatar, Box, Grow, Typography } from '@material-ui/core';
 import React from 'react';
 import { Message, MessageContent } from '../chat-types';
 import { Button, message } from 'antd';
@@ -9,19 +9,51 @@ import { SoundOutlined } from "@ant-design/icons";
 export function MuiMessage({
   id,
   message,
+  showDateTime,
 }: {
   id: string;
   message: Message<MessageContent>;
+  showDateTime: boolean;
 }): React.ReactElement {
   if (message.deletedAt) {
     return <div id={id} />;
   }
 
-  const l = message.self ? '20%' : 0;
-  const r = message.self ? 0 : '20%';
-  const bgcolor = message.self ? 'primary.main' : 'background.paper';
-  const color = message.self ? 'primary.contrastText' : 'text.primary';
-  const justifyContent = message.self ? 'flex-end' : 'flex-start';
+  const dispDate = message.updatedAt ? message.updatedAt : message.createdAt;
+
+  const ChatAvator = (
+    <Box
+      minWidth={0}
+      flexShrink={0}
+      ml={message.self ? 1 : 0}
+      mr={message.self ? 0 : 1}
+    >
+      <Avatar alt={message.username} src={message.avatar} />
+    </Box>
+  );
+
+  const ChatUsername = (
+    <Box maxWidth="100%" mx={1}>
+      <Typography variant="body2" align={message.self ? 'right' : 'left'}>
+        {message.username}
+      </Typography>
+    </Box>
+  );
+
+  const ChatDate = (
+    <Box maxWidth="100%" mx={1}>
+      <Typography
+        variant="body2"
+        align={message.self ? 'right' : 'left'}
+        color="textSecondary"
+      >
+        {dispDate?.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        })}
+      </Typography>
+    </Box>
+  );
 
   const playSoundContent = async () => {
     if (message.audio) {
@@ -34,12 +66,14 @@ export function MuiMessage({
     <Grow in>
       <Box
         id={id}
-        flex="0 0 auto"
+        maxWidth="100%"
+        flex="0 1 auto"
         my={1}
-        pl={l}
-        pr={r}
+        pl={message.self ? '20%' : 0}
+        pr={message.self ? 0 : '20%'}
         display="flex"
-        justifyContent={justifyContent}
+        justifyContent={message.self ? 'flex-end' : 'flex-start'}
+        style={{ overflowWrap: 'break-word' }}
       >
         <Box
           minWidth={0}
@@ -80,6 +114,7 @@ export function MuiMessage({
             </div>
           )}
         </Box>
+        {message.avatar && message.self && ChatAvator}
       </Box>
     </Grow>
   );

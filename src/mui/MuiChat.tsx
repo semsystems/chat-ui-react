@@ -100,10 +100,10 @@ export function MuiChat({
   }>;
   const CustomComponent = React.useMemo((): CustomComponentType => {
     if (!actReq || actReq.type !== 'custom') {
-      return (null as unknown) as CustomComponentType;
+      return null as unknown as CustomComponentType;
     }
-    return ((actReq as CustomActionRequest)
-      .Component as unknown) as CustomComponentType;
+    return (actReq as CustomActionRequest)
+      .Component as unknown as CustomComponentType;
   }, [actReq]);
 
   const unknownMsg = {
