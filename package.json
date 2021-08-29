@@ -14,7 +14,6 @@
     "dist"
   ],
   "main": "dist/cjs/index.js",
-  "browser": "dist/browser/chat-ui-react.umd.min.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "repository": {
@@ -27,7 +26,6 @@
     "build:types": "tsc -p tsconfig.build.json",
     "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel src --out-dir dist/esm --extensions \".ts,.tsx,js,jsx\"",
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs --extensions \".ts,.tsx,js,jsx\"",
-    "build:browser": "cross-env NODE_ENV=production rollup -c",
     "lint": "run-s -c lint:*",
     "lint:eslint": "eslint src",
     "lint:prettier": "prettier --check src",
@@ -38,9 +36,8 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.7",
-    "@material-ui/icons": "^4.11.2",
     "audio-recorder-polyfill": "^0.4.1",
-    "chat-ui-react": "^0.2.14",
+    "@material-ui/icons": "^4.11.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

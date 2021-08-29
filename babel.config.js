@@ -4,8 +4,6 @@ module.exports = function (api) {
   const envNames = [
     'esm',
     'cjs',
-    'rollupUmd',
-    'rollupUmdPolyfill',
     'rollupEsm',
     'rollupEsmPolyfill',
   ];
@@ -23,14 +21,6 @@ module.exports = function (api) {
         targets: {
           node: '10',
         },
-      },
-      rollupUmd: {
-        bugfixes: true,
-        modules: false,
-      },
-      rollupUmdPolyfill: {
-        bugfixes: true,
-        modules: false,
       },
       rollupEsm: {
         bugfixes: true,
@@ -65,15 +55,6 @@ module.exports = function (api) {
       cjs: {
         useESModules: false,
         version,
-      },
-      rollupUmd: {
-        useESModules: true,
-        version,
-      },
-      rollupUmdPolyfill: {
-        useESModules: true,
-        version,
-        corejs,
       },
       rollupEsm: {
         useESModules: true,

@@ -1,14 +1,35 @@
-import { Avatar, Box, Grow, Typography, Button } from '@material-ui/core';
+import { Avatar, Box, Grow, Typography, Button, Theme, makeStyles } from '@material-ui/core';
 import React from 'react';
 
 import { Message, MessageContent } from '../chat-types';
 
+const useStyles = makeStyles((theme: Theme) => ({
+  audioButton: {
+    flex: '1 0 0%',
+    display: 'flex',
+    flexDirection: 'row',
+    border: '0px',
+    color: 'rgb(63, 81, 181)',
+    margin: '0px 0px 5px 10px',
+    height: '20px',
+    width: '20px',
+    boxShadow: '1px 1px 2px rgba(0,0,0,.3)',
+    marginTop:'auto',
+  },
+  audioTypography: {
+    flex: '0 1 0%',
+    display: 'flex',
+    flexDirection: 'row'
+  },
+}));
+
 export function AudioMessageButton(props: any): JSX.Element {
+  const styleClass = useStyles();
   if (props.component) {
     return props.component;
   }
   return <Button
-  style= {{flex: '1 0 0%', display: 'flex',flexDirection: 'row', border: '0px', color: 'rgb(63, 81, 181)', margin: '0px 0px 5px 10px', height: '20px', width: '20px', boxShadow: '1px 1px 2px rgba(0,0,0,.3)', marginTop:'auto'}}
+  className= {styleClass.audioButton}
   >Sound</Button>
 }
 
