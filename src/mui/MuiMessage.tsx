@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexDirection: 'row',
     border: '0px',
-    color: 'rgb(63, 81, 181)',
+    color: 'rgb(164,185,173)',
     margin: '0px 0px 5px 10px',
     height: '20px',
     width: '20px',
