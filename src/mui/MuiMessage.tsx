@@ -3,36 +3,6 @@ import React from 'react';
 
 import { Message, MessageContent } from '../chat-types';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  audioButton: {
-    flex: '1 0 0%',
-    display: 'flex',
-    flexDirection: 'row',
-    border: '0px',
-    color: 'rgb(63, 81, 181)',
-    margin: '0px 0px 5px 10px',
-    height: '20px',
-    width: '20px',
-    boxShadow: '1px 1px 2px rgba(0,0,0,.3)',
-    marginTop:'auto',
-  },
-  audioTypography: {
-    flex: '0 1 0%',
-    display: 'flex',
-    flexDirection: 'row'
-  },
-}));
-
-export function AudioMessageButton(props: any): JSX.Element {
-  const styleClass = useStyles();
-  if (props.component) {
-    return props.component;
-  }
-  return <Button
-  className= {styleClass.audioButton}
-  >Sound</Button>
-}
-
 export function MuiMessage({
   id,
   message,
@@ -47,15 +17,6 @@ export function MuiMessage({
   }
 
   const dispDate = message.updatedAt ? message.updatedAt : message.createdAt;
-  const component = message.audioButtonComponent;
-  const audioButtonProps = { component };
-
-  const playSoundContent = async () => {
-    if (message.audio) {
-        const sound = new Audio('data:audio/wav;base64,' + message.audio);
-        await sound.play();
-    }
-  };
 
   const ChatAvator = (
     <Box
@@ -117,20 +78,13 @@ export function MuiMessage({
             boxShadow={2}
           >
             {message.type === 'text' && (
-              <Typography variant="body1" style={{ whiteSpace: 'pre-wrap' }}>
-                {message.content}
-              </Typography>
-            )}
-            {message.type === 'text_audio' && (
-              <div style={{flex: '0 1 0%', display: 'flex', flexDirection: 'row'}}>
+              <div style={{flex: '0 1 0%', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                 <Typography
                   variant="body1"
-                  style={{ overflowWrap: 'break-word', whiteSpace: 'pre-wrap' }}>
+                  style={{ overflowWrap: 'break-word', whiteSpace: 'pre-wrap', display: 'flex', alignItems: 'center'}}>
                     {message.content}
                 </Typography>
-                <div onClick={playSoundContent}>
-                  <AudioMessageButton {...audioButtonProps}/>
-                </div>
+                {message.buttons}
               </div>
             )}
             {message.type === 'jsx' && <div>{message.content}</div>}
