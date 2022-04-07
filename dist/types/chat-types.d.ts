@@ -11,23 +11,17 @@ export interface Message<C extends MessageContent> {
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date;
-    audio?: string;
-    audioButtonComponent?: JSX.Element;
+    buttons?: JSX.Element[];
 }
 export declare type MessageContent = string | JSX.Element;
 export interface TextMessage extends Message<string> {
     type: 'text';
     content: string;
+    buttons?: JSX.Element[];
 }
 export interface JSXMessage extends Message<JSX.Element> {
     type: 'jsx';
     content: JSX.Element;
-}
-export interface TextAudioMessage extends Message<string> {
-    type: 'text_audio';
-    content: string;
-    audio: string;
-    audioButtonComponent?: JSX.Element;
 }
 export interface ActionRequest {
     type: string;
