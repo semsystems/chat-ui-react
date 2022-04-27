@@ -81,7 +81,7 @@ export function MuiMessage({
               <div style={{flex: '0 1 0%', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                 <Typography
                   variant="body1"
-                  style={{ overflowWrap: 'break-word', whiteSpace: 'pre-wrap', display: 'flex', alignItems: 'center'}}>
+                  style={{ overflowWrap: 'break-word', whiteSpace: 'pre-wrap', display: 'flex', alignItems: 'center', maxWidth: '510px'}}>
                     {message.content}
                 </Typography>
                 {message.buttons}
