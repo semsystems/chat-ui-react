@@ -93,7 +93,8 @@ function MuiMessage({
       overflowWrap: 'break-word',
       whiteSpace: 'pre-wrap',
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
+      maxWidth: '510px'
     }
   }, message.content), message.buttons), message.type === 'jsx' && /*#__PURE__*/_react.default.createElement("div", null, message.content)), showDateTime && ChatDate), message.avatar && message.self && ChatAvator));
 }
